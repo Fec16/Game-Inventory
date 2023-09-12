@@ -1,2 +1,2 @@
-# Game-Inventory
+# game-inventory
 Tugas2 PBP
