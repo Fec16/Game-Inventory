@@ -66,3 +66,35 @@
 
      return render(request, "main.html", context)
      ```
+     + Konfigurasi *routing* urls dengan membuat file `urls.py` di `main` dan isi dengan perintah berikut.
+     ```
+     from django.urls import path
+     from main.views import show_main
+
+     urlpatterns = [
+         path('', show_main, name='show_main'),
+     ]
+     ```
+   + Pada `urls.py` di `game_inventory` bukan `main` tambahkan import:
+     ```
+     from django.urls import path, include
+     ```
+   + Pada list `urlpatterns` tambahkan:
+     ```
+     path('main/', include('main.urls')),
+     ```
+   + Jalankan perintah `python manage.py runserver` dan buka link http://localhost:8000/main/ di browser manapun. Jika tampilan sudah sesuai main.html, selamat anda telah berhasil!
+   + Terakhir lakukan pengecekan attribute-attribute pada models. Buka file `tests.py` pada direktori `main` dan implementasikan sesuai contoh [berikut](https://github.com/Fec16/game-inventory/blob/main/main/tests.py)
+   + Jalankan tes dengan menggunakan perintah berikut.
+     ```
+     python manage.py test
+     ```
+   + Jika tes berhasil, akan mengeluarkan informasi berikut.
+     ```
+     ----------------------------------------------------------------------
+    Ran 1 test in 0.001s
+
+   OK
+   Destroying test database for alias 'default'...
+   ```
+     
