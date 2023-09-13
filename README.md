@@ -42,3 +42,27 @@
      ...
      ]
      ```
+   + Buat direktori baru bernama `templates` di dalam direktori aplikasi `main` 
+   + Buat file yang diberi nama `main.html` di dalam folder tersebut.
+   + Contoh implementasi `main.html` bisa dlihat di [sini]
+(https://github.com/Fec16/game-inventory/blob/main/main/templates/main.html).
+   + Pada file `models.py` tambahkan class `Item` yang memiliki attribute `name`, `amount`, `type`, `quality`, `description`, dan `id` yang contohnya bisa dilihat di [sini](https://github.com/Fec16/game-inventory/blob/main/main/models.py).
+   + Setiap melakukan perubahan pada file `models.py` kita perlu melakukan **migration** dengan menjalankan perintah berikut.
+     ```
+     python manage.py makemigrations
+     python manage.py migrate
+     ``` 
+   + Buka berkas `views.py` pada berkas aplikasi `main` dan tambahkan:
+     ```
+     from django.shortcuts import render
+     ```
+   + Tambahkan fungsi `show_main` di bawah import:
+     ```
+     def show_main(request):
+    	context = {
+        	'name': 'Jason Kent Winata',
+        	'class': 'PBP F'
+    	}
+
+     return render(request, "main.html", context)
+     ```
