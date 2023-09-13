@@ -24,3 +24,21 @@
      requests
      urllib3
      ```
+   + Pasang dependencies dengan perintah berikut.
+     ```
+     pip install -r requirements.txt
+     ```
+   + Buka file `settings.py`, pada `ALLOWED_HOSTS` tambahkan `"*"` kedalam list, ini bertujuan agar semua host dapat mengakses aplikasi web.
+   + + Buat aplikasi baru dengan nama `main` dalam proyek game_inventory.
+     ```
+     python manage.py startapp main
+     ```
+     Akan terbentuk folder baru yang bernama `main` dan isinya kumpulan file yang muncul saat pertama kali membuat django app.
+   + Daftarkan aplikasi `main` ke dalam `INSTALLED_APPS` yang ada pada file `settings.py` di direktori utama.
+     ```
+     INSTALLED_APPS = [
+     ...,
+     'main',
+     ...
+     ]
+     ```
