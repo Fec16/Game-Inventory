@@ -94,7 +94,7 @@
      ----------------------------------------------------------------------
      Ran 1 test in 0.001s
 
-      OK
-      Destroying test database for alias 'default'...
-      ```
+     OK
+     Destroying test database for alias 'default'...
+     ```
      
