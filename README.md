@@ -100,3 +100,5 @@
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html. <br>
 ![bagan_django](https://github.com/Fec16/game-inventory/assets/118716513/3d7173ba-7560-41c1-850a-5d01313d8081)
 
+3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? <br>
+Kita menggunakan virtual environment untuk memastikan bahwa dependencies setiap proyek terisolasi. Hal ini penting karena proyek-proyek yang berbeda dapat menggunakan dependencies yang berbeda, dan kita perlu mencegah agar dependencies tersebut tidak bertabrakan. Dengan menggunakan virtual environment, kita dapat memastikan keamanan proyek kita. Kita dapat membuat aplikasi web berbasis Django tanpa virtual environment, tetapi tidak dianjurkan untuk alasan tersebut.
