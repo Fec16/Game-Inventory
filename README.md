@@ -102,3 +102,12 @@
 
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? <br>
 Kita menggunakan virtual environment untuk memastikan bahwa dependencies setiap proyek terisolasi. Hal ini penting karena proyek-proyek yang berbeda dapat menggunakan dependencies yang berbeda, dan kita perlu mencegah agar dependencies tersebut tidak bertabrakan. Dengan menggunakan virtual environment, kita dapat memastikan keamanan proyek kita. Kita dapat membuat aplikasi web berbasis Django tanpa virtual environment, tetapi tidak dianjurkan untuk alasan tersebut.
+
+4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya! <br>
+   + **MVC (Model-View-Controller)** <br>
+     MVC adalah konsep architecture yang digunakan untuk mengimplementasikan interface pengguna dan memfokuskan pada pemisahan representasi data dari komponen-komponen yang berinteraksi atau memproses data.
+   + **MVT (Model-View-Template)** <br>
+     MVT adalah konsep architecture yang mirip dengan MVC namun Controller sudah diurus oleh framework yang kita gunakan, dalam hal ini maka Controller sudah diurus oleh Django.
+   + **MVVM (Model-View-ViewModel)** <br>
+     MVVM adalah konsep architecture yang terstruktur untuk memisahkan logika program dengan control interface pengguna.
+     
