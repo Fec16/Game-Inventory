@@ -1,4 +1,4 @@
-### Jason Game Inventory
+![bagan_django](https://github.com/Fec16/game-inventory/assets/118716513/3d7173ba-7560-41c1-850a-5d01313d8081)### Jason Game Inventory
 ---
 #### Nama: Jason Kent Winata
 #### NPM: 2206081313
@@ -97,4 +97,6 @@
      OK
      Destroying test database for alias 'default'...
      ```
-     
+2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html. <br>
+[bagan_django](https://github.com/Fec16/game-inventory/assets/118716513/a918a633-3e1f-4013-bf3d-b8a8e846eff9)
+
