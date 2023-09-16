@@ -4,7 +4,7 @@
 #### NPM: 2206081313
 #### Link: - <br>
 ---
-### Pertanyaan untuk Tugas 2
+### Tugas 2
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). <br>
    + Buat direktori baru dengan nama `game_inventory` .
    + Buka command prompt dan jalankan perintah berikut. <br>
@@ -110,4 +110,5 @@
      MVT adalah konsep architecture yang mirip dengan MVC namun Controller sudah diurus oleh framework yang kita gunakan, dalam hal ini maka Controller sudah diurus oleh Django.
    + **MVVM (Model-View-ViewModel)** <br>
      MVVM adalah konsep architecture yang terstruktur untuk memisahkan logika program dengan control interface pengguna.
-     
+---
+### Tugas 3
