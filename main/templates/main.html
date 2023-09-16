@@ -1,6 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Jason Game Inventory</h1>
 
 <h5>Name: </h5>
 <p>{{ name }}</p> <!-- Ubahlah sesuai dengan nama kamu -->
 <h5>Class: </h5>
 <p>{{ class }}</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Quality</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for item in items %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.quality}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date_added}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_item' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
