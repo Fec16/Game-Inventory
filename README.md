@@ -112,3 +112,12 @@
      MVVM adalah konsep architecture yang terstruktur untuk memisahkan logika program dengan control interface pengguna.
 ---
 ### Tugas 3
+1. Apa perbedaan antara form POST dan form GET dalam Django? <br>
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data? <br>
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern? <br>
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). <br>
+
+5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md. <br>

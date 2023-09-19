@@ -12,7 +12,8 @@ def show_main(request):
     context = {
         'name': 'Jason Kent Winata',
         'class': 'PBP F',
-        'items': items
+        'items': items,
+        'message': "You have successfully added a new item: " + items[1].name,
     }
 
     return render(request, "main.html", context)
