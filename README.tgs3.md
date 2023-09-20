@@ -181,6 +181,4 @@
 
    + /xml/99072892-9bff-4075-8df7-354872ea4dd1 <br>
     ![xml-id](https://github.com/Fec16/game-inventory/assets/118716513/e7048e61-7d02-46b9-a993-b5fb878bd731)
-
----
 ---
