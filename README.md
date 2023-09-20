@@ -281,8 +281,9 @@
    + /xml/ <br>
     ![xml](https://github.com/Fec16/game-inventory/assets/118716513/68d48880-6728-42ae-b544-f9fbbd8d9dfa)
 
-   + /json/60f0fa69-89fe-4017-948c-ee02a936b665 <br>
-    ![json-id](https://github.com/Fec16/game-inventory/assets/118716513/c1e98574-b3f8-4a0d-ab4b-03067d5e6c8e)
+   + /json/48384ed1-5587-481a-8d69-826ce287eef8 <br>
+    ![json-id](https://github.com/Fec16/game-inventory/assets/118716513/3026a89f-998c-4afc-a6e9-db0b864075fb)
+
 
    + /xml/99072892-9bff-4075-8df7-354872ea4dd1 <br>
     ![xml-id](https://github.com/Fec16/game-inventory/assets/118716513/e7048e61-7d02-46b9-a993-b5fb878bd731)
