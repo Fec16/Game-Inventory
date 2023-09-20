@@ -157,7 +157,7 @@
     ```
     env\Scripts\activate.bat
     ```
-    + Buat folder `templates` di root folder dan di dalamnya buat berkas `base.html`. Untuk contoh berkas dapat dilihat di [sini](https://github.com/Fec16/game inventory/blob/main/templates/base.html). <br>
+    + Buat folder `templates` di root folder dan di dalamnya buat berkas `base.html`. Untuk contoh berkas dapat dilihat di [sini](https://github.com/Fec16/game-inventory/blob/main/templates/base.html). <br>
     + Buka `settings.py` lalu ke variable `TEMPLATES` dan sesuaikan dengan potongan kode berikut. <br>
     ```
     ...
@@ -237,6 +237,7 @@
 
         context = {'form': form}
         return render(request, "create_product.html", context)
+
      def show_xml(request):
         data = Item.objects.all()
         return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
@@ -271,3 +272,13 @@
      ```
 
 5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md. <br>
+   + /create-item <br>
+    
+   + /json/ <br>
+    
+   + /xml/ <br>
+    
+   + /json/60f0fa69-89fe-4017-948c-ee02a936b665 <br>
+    
+   + /xml/99072892-9bff-4075-8df7-354872ea4dd1 <br>
+    
