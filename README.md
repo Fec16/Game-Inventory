@@ -272,13 +272,18 @@
      ```
 
 5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md. <br>
-   + /create-item <br>
-    
+   + /create-item/ <br>
+    ![create-item](https://github.com/Fec16/game-inventory/assets/118716513/af5f4774-6c17-44f8-b6da-248966c5d8f2)
+
    + /json/ <br>
-    
+    ![json](https://github.com/Fec16/game-inventory/assets/118716513/86445911-33ed-4378-9058-3d033c68ffc1)
+
    + /xml/ <br>
-    
+    ![xml](https://github.com/Fec16/game-inventory/assets/118716513/68d48880-6728-42ae-b544-f9fbbd8d9dfa)
+
    + /json/60f0fa69-89fe-4017-948c-ee02a936b665 <br>
-    
+    ![json-id](https://github.com/Fec16/game-inventory/assets/118716513/c1e98574-b3f8-4a0d-ab4b-03067d5e6c8e)
+
    + /xml/99072892-9bff-4075-8df7-354872ea4dd1 <br>
-    
+    ![xml-id](https://github.com/Fec16/game-inventory/assets/118716513/e7048e61-7d02-46b9-a993-b5fb878bd731)
+
