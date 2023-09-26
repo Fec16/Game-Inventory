@@ -81,7 +81,6 @@
       path('login/', login_user, name='login'),
       path('logout/', logout_user, name='logout'),
       ...
-]
       ```
 
    + Membuat dua akun pengguna dengan masing-masing tiga dummy data
