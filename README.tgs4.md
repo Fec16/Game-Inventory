@@ -134,3 +134,9 @@
       <h5>Sesi terakhir login: {{ last_login }}</h5>
       ...
       ```
+      + Setiap kali melakukan perubahan pada `models.py`, lakukan migrasi dengan command
+      ```
+      python manage.py makemigrations
+      python manage.py migrate
+      ```
+      
