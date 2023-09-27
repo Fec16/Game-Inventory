@@ -23,7 +23,7 @@ def show_main(request):
         'class': 'PBP F',
         'items' : items,
         'message': f"You have {item_sum} items in the shelf",
-        'last_login': request.COOKIES['last_login'],
+        'last_login': request.COOKIES.get('last_login')
     }
 
     return render(request, "main.html", context)
