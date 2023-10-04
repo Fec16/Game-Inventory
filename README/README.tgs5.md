@@ -44,8 +44,8 @@
     + Margin dan Padding merupakan properti CSS yang berfungsi untuk mengatur tata letak antar elemen HTML.
     + Margin digunakan untuk mengatur ruang di antara elemen tersebut dengan elemen-elemen lain di sekitarnya
     + Padding digunakan untuk mengatur jarak antara konten elemen tersebut dengan batas atau tepi elemen tersebut. 
-
-    <img src= />
+    <br>
+    <img src= "https://github.com/Fec16/game-inventory/assets/118716513/f1d8c882-3c1e-4bc6-927e-12ed6b87f321" width="400">
 
 
 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
