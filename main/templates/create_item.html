@@ -1,7 +1,47 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h1>Add New Product</h1>
+<style>
+    /* Reset some default styles */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Monospace, sans-serif;
+    }
+
+    /* Style the header */
+    h1 {
+        font-size: 24px;
+        color: #E4002B; /* Updated color to #E4002B */
+    }
+
+    /* Style the table */
+    table {
+        border-collapse: collapse;
+        width: 100% ;
+        
+    }
+
+    table, th, td {
+        border: 1px solid #E4002B; 
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Style buttons */
+    input[type="submit"] {
+        background-color: #E4002B;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+
+<h1>Add New Item</h1>
 
 <form method="POST">
     {% csrf_token %}

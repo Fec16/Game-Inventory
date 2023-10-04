@@ -1,69 +1,102 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Jason Game Inventory</h1>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Monospace, sans-serif;
+    }
 
-<h5>Name: </h5>
-<p>{{ name }}</p> <!-- Ubahlah sesuai dengan nama kamu -->
-<h5>Class: </h5>
-<p>{{ class }}</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+    /* Header */
+    h1 {
+        font-size: 24px;
+        color: #E4002B; /* Updated color to #E4002B */
+    }
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Type</th>
-        <th>Quality</th>
-        <th>Description</th>
-        <th>Delete</th>
-    </tr>
+    /* Cards */
+    .card {
+        border: 1px solid #E4002B; /* Updated border color */
+        padding: 10px;
+        margin: 10px;
+        background-color: #fff1e2;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
 
+    .card:last-child {
+        background-color: #FFD700; 
+        color: #000; 
+    }
+
+    /* Buttons */
+    button {
+        background-color: #E4002B; /* Updated background color */
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    /* "Add New Product" and "Logout" buttons */
+    button.add-new-product, button.logout {
+        background-color: #009933; 
+    }
+
+    /* Last login message */
+    h5 {
+        color: #777;
+    }
+
+    /* Style links */
+    a {
+        text-decoration: none;
+        color: #E4002B; 
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #E4002B; 
+    }
+</style>
+
+<h1>Name: {{ name }}</h1>
+<h1>Class: {{ class }}</h1>
+
+<div class="card">
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
     {{message}}
     {% for item in items %}
-        <tr>
-            <td>{{item.name}}</td>
-            <td>
-                <a href="{% url 'main:decrement_item' item.id %}">
-                    <button>
-                        -
-                    </button>
-                </a>
-                {{item.amount}}
-                <a href="{% url 'main:increment_item' item.id %}">
-                    <button>
-                        +
-                    </button>
-                </a>
-            </td>
-            <td>{{item.type}}</td>
-            <td>{{item.quality}}</td>
-            <td>{{item.description}}</td>
-            <td>
-                <a href="{% url 'main:delete_item' item.id %}">
-                    <button>
-                        Delete
-                    </button>
-                </a>
-            </td>
-        </tr>
+        <div class="card">
+            <h3>{{ item.name }}</h3>
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Type:</strong> {{ item.type }}</p>
+            <p><strong>Quality:</strong> {{ item.quality }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <a href="{% url 'main:decrement_item' item.id %}">
+                <button>-</button>
+            </a>
+            <span>{{ item.amount }}</span>
+            <a href="{% url 'main:increment_item' item.id %}">
+                <button>+</button>
+            </a>
+            <a href="{% url 'main:delete_item' item.id %}">
+                <button>Delete</button>
+            </a>
+        </div>
     {% endfor %}
-</table>
+</div>
 
 <br />
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <a href="{% url 'main:create_item' %}">
-    <button>
-        Add New Product
-    </button>
+    <button class="add-new-product">Add New Product</button>
 </a>
 
 <a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
+    <button class="logout">Logout</button>
 </a>
 
 {% endblock content %}
