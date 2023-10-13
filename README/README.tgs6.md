@@ -145,45 +145,45 @@
 
     + Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
 
-```
- async function deleteItem(itemId) {
-      alert("Hello!");
-      fetch(`delete_item_ajax/${itemId}/`, {
-          method: "DELETE",
-          
-      }).then(refreshItems)
-      return false
-  }
-```
-```
- async function deleteItem(itemId) {
-      const url = `/delete_product_ajax/${itemId}`;  // Use backticks for string interpolation
-      fetch(url, {
-          method: "DELETE",
-      }).then(refreshProducts);
-
-      return false;
+    ```
+    async function deleteItem(itemId) {
+        alert("Hello!");
+        fetch(`delete_item_ajax/${itemId}/`, {
+            method: "DELETE",
+            
+        }).then(refreshItems)
+        return false
     }
-```
+    ```
+    ```
+    async function deleteItem(itemId) {
+        const url = `/delete_product_ajax/${itemId}`;  // Use backticks for string interpolation
+        fetch(url, {
+            method: "DELETE",
+        }).then(refreshProducts);
 
-```
-@csrf_exempt
-def delete_product_ajax(request, item_id):
-    if request.method == 'DELETE':
-        try:
-            product = Product.objects.get(pk=item_id)
-            product.delete()
-            response_data = {'message': 'DELETED'}
-            status_code = 201
-            return HttpResponse(b"DELETED", status=201)
-        except:
-            return HttpResponseNotFound()
+        return false;
+        }
+    ```
 
-    return HttpResponseNotFound()
-```
+    ```
+    @csrf_exempt
+    def delete_product_ajax(request, item_id):
+        if request.method == 'DELETE':
+            try:
+                product = Product.objects.get(pk=item_id)
+                product.delete()
+                response_data = {'message': 'DELETED'}
+                status_code = 201
+                return HttpResponse(b"DELETED", status=201)
+            except:
+                return HttpResponseNotFound()
 
-```
-path('delete_product_ajax/<int:item_id>/', delete_product_ajax, name='delete_product_ajax'),  
-```
+        return HttpResponseNotFound()
+    ```
 
-<a align="center" href="http://jason-kent-tugas.pbp.cs.ui.ac.id" >View Site</a>
+    ```
+    path('delete_product_ajax/<int:item_id>/', delete_product_ajax, name='delete_product_ajax'),  
+    ```
+
+    <a align="center" href="http://jason-kent-tugas.pbp.cs.ui.ac.id" >View Site</a>
