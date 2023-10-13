@@ -41,94 +41,46 @@
 
     + Modal di-trigger dengan menekan suatu tombol pada halaman utama. Saat penambahan item berhasil, modal harus ditutup dan input form harus dibersihkan dari data yang sudah dimasukkan ke dalam form sebelumnya.
 
-```
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Order New Pokemon Card!</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <form id="form" onsubmit="return false;">
-                  {% csrf_token %}
-                  <div class="mb-3">
-                      <label for="name" class="col-form-label" style="color: #181818;">Name: (Dropdown Box)</label>
-                      <select class="form-control" id="name" name="name">
-                        {% for choice in cards %}
-                            <option value="{{ choice.name }}">{{ choice.name }}</option>
-                        {% endfor %}
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                      <label for="amount" class="col-form-label"style="color: #181818;">Amount:</label>
-                      <input type="number" class="form-control" id="amount" name="amount"></input>
-                  </div>
-                  <div class="mb-3">
-                      <label for="description" class="col-form-label" style="color: #181818;">Description:</label>
-                      <textarea class="form-control" id="description" name="description"></textarea>
-                  </div>
-              </form>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
-          </div>
-        </div>
-  </div>
-</div>
-```
+    ```
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Order New Pokemon Card!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label" style="color: #181818;">Name: (Dropdown Box)</label>
+                        <select class="form-control" id="name" name="name">
+                            {% for choice in cards %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label"style="color: #181818;">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label" style="color: #181818;">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+            </div>
+    </div>
+    </div>
+    ```
 
-```
-function addProduct() {
-    fetch("{% url 'main:add_product_ajax' %}", {
-        method: "POST",
-        body: new FormData(document.querySelector('#form'))
-    }).then(refreshProducts)
-
-    document.getElementById("form").reset()
-    return false
-}
-
-document.getElementById("button_add").onclick = addProduct
-```
-
-dengan `document.getElementById("button_add").onclick = addProduct` maka button dengan id button_add akan menjalankan function addProduct ketika ditekan buttonnya yang akan merest form ketika sudah ditekan
-
-    + Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
-
-Pada fungsi ini akan mengambil data dari method POST pada fungsi sebelumnya dari modal, dengan get, kemudian akan membuat produk baru seperti pada tugas sebelumnya
-
-```
-@csrf_exempt
-def add_item_ajax(request):
-    if request.method == 'POST':
-        name = request.POST.get("name")
-        amount = request.POST.get("amount")
-        type = request.POST.get("type")
-        quality = request.POST.get("quality")
-        description = request.POST.get("description")
-        user = request.user
-
-        new_product = Item(name=name, amount=amount, type=type, quality=quality, description=description, user=user)
-        new_product.save()
-
-        return HttpResponse(b"CREATED", status=201)
-
-    return HttpResponseNotFound()
-```
-
-    + Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
-pada path ini akan merouting create product ajax dari fungsi views untuk digunakan pada main.html
-
-    path('create-product-ajax/', add_product_ajax, name='add_product_ajax'),
-    path('delete_product_ajax/<int:item_id>/', delete_product_ajax, name='delete_product_ajax'),    
-
-    + Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
-
-dihubungkan dengan function add product dengan memberikan fungsi pada button dengan ajax
-```
-function addProduct() {
+    ```
+    function addProduct() {
         fetch("{% url 'main:add_product_ajax' %}", {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
@@ -138,13 +90,60 @@ function addProduct() {
         return false
     }
 
-document.getElementById("button_add").onclick = addProduct
+    document.getElementById("button_add").onclick = addProduct
+    ```
 
-- [X] Melakukan perintah collectstatic.
+    dengan `document.getElementById("button_add").onclick = addProduct` maka button dengan id button_add akan menjalankan function addProduct ketika ditekan buttonnya yang akan merest form ketika sudah ditekan
 
-`python manage.py collectstatic` dan dikumpulan semua file static pada suatu file 
+        + Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
 
-- [X] Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
+    Pada fungsi ini akan mengambil data dari method POST pada fungsi sebelumnya dari modal, dengan get, kemudian akan membuat produk baru seperti pada tugas sebelumnya
+
+    ```
+    @csrf_exempt
+    def add_item_ajax(request):
+        if request.method == 'POST':
+            name = request.POST.get("name")
+            amount = request.POST.get("amount")
+            type = request.POST.get("type")
+            quality = request.POST.get("quality")
+            description = request.POST.get("description")
+            user = request.user
+
+            new_product = Item(name=name, amount=amount, type=type, quality=quality, description=description, user=user)
+            new_product.save()
+
+            return HttpResponse(b"CREATED", status=201)
+
+        return HttpResponseNotFound()
+    ```
+
+    + Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+
+    ```
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax'),
+    path('delete_product_ajax/<int:item_id>/', delete_product_ajax, name='delete_product_ajax'),  
+    ```  
+
+    + Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+
+    ```
+    function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+    document.getElementById("button_add").onclick = addProduct
+    ```
+
+    + Melakukan perintah collectstatic `python manage.py collectstatic` dan dikumpulan semua file static pada suatu file 
+
+    + Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
 
 ```
  async function deleteItem(itemId) {
