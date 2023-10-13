@@ -1,64 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Monospace, sans-serif;
-    }
-
-    /* Header */
-    h1 {
-        font-size: 24px;
-        color: #E4002B; /* Updated color to #E4002B */
-    }
-
-    /* Cards */
-    .card {
-        border: 1px solid #E4002B; /* Updated border color */
-        padding: 10px;
-        margin: 10px;
-        background-color: #fff1e2;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-    }
-
-    .card:last-child {
-        background-color: #FFD700; 
-        color: #000; 
-    }
-
-    /* Buttons */
-    button {
-        background-color: #E4002B; /* Updated background color */
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-    }
-
-    /* "Add New Product" and "Logout" buttons */
-    button.add-new-product, button.logout {
-        background-color: #009933; 
-    }
-
-    /* Last login message */
-    h5 {
-        color: #777;
-    }
-
-    /* Style links */
-    a {
-        text-decoration: none;
-        color: #E4002B; 
-    }
-
-    a:hover {
-        text-decoration: underline;
-        color: #E4002B; 
-    }
-</style>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
 
 <h1>Name: {{ name }}</h1>
 <h1>Class: {{ class }}</h1>
@@ -99,4 +45,98 @@
     <button class="logout">Logout</button>
 </a>
 
+<div id="item_table"></div>
+
+<button style="margin-left: 30px; margin-bottom: 30px;
+        background-color: #5ea8c1; border: 1px solid #e2c4c4; color: #f3d3d3; display: block; border-radius: 6px; width: 3in; font-size: 20px; align-content: center; margin-right: 4%;" 
+      type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Order Card Here using AJAX!</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  async function getItems() {
+    return fetch("{% url 'main:get_item_ajax' %}").then((res) => res.json())
+  }
+
+  async function refreshItems() {
+    document.getElementById("item_table").innerHTML = ""
+    const products = await getItems()
+    let htmlString = `<tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Quality</th>
+        <th>Description</th>
+    </tr>`
+    products.forEach((item) => {
+        htmlString += `\n<tr>
+        <td>${item.fields.name}</td>
+        <td>${item.fields.amount}</td>
+        <td>${item.fields.type}</td>
+        <td>${item.fields.Quality}</td>
+        <td>${item.fields.Description}</td>
+    </tr>` 
+    })
+    
+    document.getElementById("item_table").innerHTML = htmlString
+  }
+
+  refreshItems()
+
+  async function addItems() {
+      fetch("{% url 'main:create_ajax' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#form'))
+      }).then(refreshItems)
+
+      document.getElementById("form").reset()
+      return false
+  }
+
+  document.getElementById("button_add").onclick = addItems
+
+  async function deleteItem(itemId) {
+      alert("Hello!");
+      fetch(`delete_item_ajax/${itemId}/`, {
+          method: "DELETE",
+          
+      }).then(refreshItems)
+      return false
+  }
+
+  document.getElementById("button_add").onclick = addItems
+  document.getElementById("button_delete").onclick = deleteItem(document.getElementById("button_delete").getAttribute("data-item-id"))
+</script>
 {% endblock content %}
